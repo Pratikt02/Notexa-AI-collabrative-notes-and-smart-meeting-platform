@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", serif;
+  --font-body: "Manrope", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-ink: #12131a;
+  --color-ink-soft: #1c1e29;
+  --color-paper: #f8f5ec;
+  --color-paper-dim: #efeadb;
+  --color-paper-line: #e2dcc8;
+  --color-amber: #f2b705;
+  --color-amber-deep: #d99a00;
+  --color-teal: #2fc2b8;
+  --color-lavender: #8f7ef2;
+  --color-coral: #f2665e;
+  --color-graphite: #3c3d47;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-amber); color: var(--color-ink); }
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+.highlight-mark { position: relative; white-space: nowrap; }
+.highlight-mark::after {
+  content: "";
+  position: absolute;
+  left: -4px; right: -4px; bottom: 0.06em;
+  height: 0.34em;
+  background: var(--color-amber);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: swipe 0.7s cubic-bezier(.65,.05,.36,1) forwards;
+  animation-delay: 0.5s;
+}
+@keyframes swipe { to { transform: scaleX(1); } }
+
+.wave-bar { animation: wave 1.2s ease-in-out infinite; transform-origin: center; }
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+
+.blink-cursor { animation: blink 1.1s step-start infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.paper-texture {
+  background-image: radial-gradient(circle at 1px 1px, rgba(18,19,26,0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
