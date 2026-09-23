@@ -4,4 +4,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/Notexa-AI-collabrative-notes-and-smart-meeting-platform/',
 })
